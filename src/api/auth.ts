@@ -9,6 +9,13 @@ import User from "../models/user";
 const router = express.Router();
 const secret = configs.jwt_secret;
 
+router.get("/test", async (req: Request, res: Response) => {
+  try {
+    return res.status(201).json({ data: { message: "success" } });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+});
 router.post("/check-email", async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
