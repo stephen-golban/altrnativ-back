@@ -1,12 +1,11 @@
 import app from "./app";
+import configs from "./configs";
 import { _db } from "./configs/_db";
 
-const port = process.env.PORT || 5000;
-
-app.listen(port, async () => {
+app.listen(configs.port, async () => {
   await _db();
 
   /* eslint-disable no-console */
-  console.log(`Listening: http://localhost:${port}`);
+  console.log(`Listening: http://localhost:${configs.port}`);
   /* eslint-enable no-console */
 });
