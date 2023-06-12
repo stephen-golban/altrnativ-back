@@ -1,11 +1,5 @@
-import configs from "./index";
 import mongoose from "mongoose";
 
-export const _db = async () => {
-  return await mongoose
-    .connect(configs.db.url, {
-      autoIndex: true,
-      dbName: configs.db.name,
-    })
-    .then(() => console.log("connected to DB!"));
-};
+require("dotenv").config();
+
+export const connect = mongoose.connect(process.env.DB_URL as string);

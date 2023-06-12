@@ -3,7 +3,7 @@ import express from "express";
 
 import api from "./api";
 import configs from "./configs";
-import { _db } from "./configs/_db";
+import { connect } from "./configs/_db";
 
 const app = express();
 
@@ -18,7 +18,8 @@ app.get("/", (req, res) => {
 });
 
 app.listen(configs.port, async () => {
-  await _db();
+  await connect;
+  console.log("Connected to DB");
 
   console.log(`Listening: http://localhost:${configs.port}`);
 });
