@@ -1,11 +1,26 @@
-import app from "./app";
+import cors from "cors";
+import express from "express";
+
+import api from "./api";
 import configs from "./configs";
 import { _db } from "./configs/_db";
+
+const app = express();
+
+app.use(express.json());
+app.use(cors({ origin: "*" }));
+
+app.use("/api/v1", api);
+app.get("/", (req, res) => {
+  res.json({
+    message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
+  });
+});
 
 app.listen(configs.port, async () => {
   await _db();
 
-  /* eslint-disable no-console */
   console.log(`Listening: http://localhost:${configs.port}`);
-  /* eslint-enable no-console */
 });
+
+export default app;
