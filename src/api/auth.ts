@@ -11,7 +11,9 @@ const secret = configs.jwt_secret;
 
 router.get("/test", async (req: Request, res: Response) => {
   try {
-    return res.status(201).json({ data: { message: "success" } });
+    const user = await User.findOne({ email: "golban.stephen@gmail.com" });
+
+    return res.status(201).json({ data: { message: "success", user } });
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
   }
