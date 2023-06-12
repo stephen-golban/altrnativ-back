@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
+import configs from "./configs";
 import { ObjectId } from "mongodb";
-import configs, { get_db } from "./configs";
 import ErrorResponse from "./interfaces/ErrorResponse";
 import { NextFunction, Request, Response } from "express";
+import User from "./models/user";
 
 const secret = configs.jwt_secret;
 
@@ -39,9 +40,8 @@ export async function authMiddleware(
 
   try {
     const decoded = jwt.verify(token, secret) as any;
-    const users = get_db(req);
 
-    const user = await users.findOne({ _id: new ObjectId(decoded.sub) });
+    const user = await User.findOne({ _id: new ObjectId(decoded.sub) });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
