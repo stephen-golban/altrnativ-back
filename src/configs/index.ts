@@ -3,7 +3,6 @@ export default {
   jwt_secret: "altrnativ",
   db: {
     name: "test",
-    // url: "mongodb://mongo:oFXffZHpWPZjG8bb894k@containers-us-west-51.railway.app:6491",
   },
 };
 
