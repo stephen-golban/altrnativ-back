@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const _user = new mongoose.Schema(
@@ -21,7 +20,7 @@ const _user = new mongoose.Schema(
       required: true,
     },
     abonnement_id: {
-      type: ObjectId,
+      type: String,
       required: true,
     },
     phone_number: {
