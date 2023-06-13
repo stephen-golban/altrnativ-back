@@ -53,7 +53,7 @@ const _user = new mongoose.Schema(
     },
     card_expiry: {
       type: Date,
-      default: null,
+      default: Date.now,
     },
   },
   { timestamps: true }

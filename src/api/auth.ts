@@ -129,9 +129,7 @@ router.post("/login", async (req: Request, res: Response) => {
       return res.status(403).json({ message: "Incorrect password!" });
     }
 
-    // 7 days * 24 hours * 60 minutes * 60 seconds
-    const expiresIn = Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60;
-    const token = jwt.sign({ sub: user._id }, secret, { expiresIn });
+    const token = jwt.sign({ sub: user._id }, secret, { expiresIn: "7d" });
     return res.status(201).json({ data: { token } });
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
