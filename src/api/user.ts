@@ -1,4 +1,3 @@
-import axios from "axios";
 import Parser from "rss-parser";
 import { Router, Response, Request } from "express";
 

@@ -74,15 +74,7 @@ router.post("/resend-code", async (req: Request, res: Response) => {
 
 router.post("/register", async (req: Request, res: Response) => {
   try {
-    const {
-      email,
-      password,
-      last_name,
-      first_name,
-      phone_number,
-      abonnement_id,
-      ...rest
-    } = req.body;
+    const { email, password, ...rest } = req.body;
 
     const user = await User.findOne({ email });
 
@@ -94,15 +86,7 @@ router.post("/register", async (req: Request, res: Response) => {
     }
 
     const hp = await bcrypt.hash(password, 12);
-    const newAdmin = new User({
-      email,
-      last_name,
-      first_name,
-      phone_number,
-      password: hp,
-      abonnement_id,
-      ...rest,
-    });
+    const newAdmin = new User({ email, password: hp, ...rest });
     await newAdmin.save();
 
     return res.status(201).json({
