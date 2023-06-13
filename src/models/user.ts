@@ -27,6 +27,34 @@ const _user = new mongoose.Schema(
       type: String,
       default: "",
     },
+    accepted_info: {
+      type: Boolean,
+      default: false,
+    },
+    accepted_terms: {
+      type: Boolean,
+      default: false,
+    },
+    payment_method: {
+      type: String,
+      default: "",
+    },
+    card_cvc: {
+      type: String,
+      default: "",
+    },
+    card_number: {
+      type: String,
+      default: "",
+    },
+    card_holder_name: {
+      type: String,
+      default: "",
+    },
+    card_expiry: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true }
 );
